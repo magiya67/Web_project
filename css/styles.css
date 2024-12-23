@@ -128,3 +128,24 @@ main {
 .rating {
     font-weight: bold;
 }
+.section-container {
+    background-color: white;
+    border: 2px solid black;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.section-container h2 {
+    margin-top: 0;
+}
+
+.item-container {
+    border: 2px solid black;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.btn-black {
+    background-color: black;
+    color: white;
+}
