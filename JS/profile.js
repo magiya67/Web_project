@@ -10,29 +10,29 @@ document.addEventListener('DOMContentLoaded', function () {
     const changePasswordBtn = document.getElementById('changePasswordBtn');
     const confirmBtn = document.getElementById('confirmBtn');
 
-    // Событие для кнопки смены пароля
-    changePasswordBtn.addEventListener('click', function () {
-        const prevPassword = document.getElementById('prev-password').value.trim();
-        const newPassword = document.getElementById('new-password').value.trim();
-        var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!_?-])[A-Za-z\d!_?-]{8,20}$/;
-        if (prevPassword === '' || newPassword === '') {
-            alert('Пожалуйста, заполните все поля для смены пароля.');
-            return;
-        }
+    // // Событие для кнопки смены пароля
+    // changePasswordBtn.addEventListener('click', function () {
+    //     const prevPassword = document.getElementById('prev-password').value.trim();
+    //     const newPassword = document.getElementById('new-password').value.trim();
+    //     var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!_?-])[A-Za-z\d!_?-]{8,20}$/;
+    //     if (prevPassword === '' || newPassword === '') {
+    //         alert('Пожалуйста, заполните все поля для смены пароля.');
+    //         return;
+    //     }
 
-        if (!oldPasswords.includes(prevPassword)) {
-            alert('Старый пароль не совпадает с существующими паролями.');
-            return;
-        }
-        if (!passwordRegex.test(newPassword)) {
-            alert('Введите корректный пароль, содержащий 1 цифру, 1 заглавную и 1 строчную букву, и спецсимвол !?_-');
-            return;
-        }
+    //     if (!oldPasswords.includes(prevPassword)) {
+    //         alert('Старый пароль не совпадает с существующими паролями.');
+    //         return;
+    //     }
+    //     if (!passwordRegex.test(newPassword)) {
+    //         alert('Введите корректный пароль, содержащий 1 цифру, 1 заглавную и 1 строчную букву, и спецсимвол !?_-');
+    //         return;
+    //     }
         
-        alert('Пароль успешно изменен!');
-        document.getElementById('prev-password').value = '';
-        document.getElementById('new-password').value = '';
-    });
+    //     alert('Пароль успешно изменен!');
+    //     document.getElementById('prev-password').value = '';
+    //     document.getElementById('new-password').value = '';
+    // });
 
     let previousPhoneValue = document.getElementById('phone').value.trim(); 
 

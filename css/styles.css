@@ -1,9 +1,10 @@
-body {
+body, html {
     background-color: white;
     margin: 0;
     padding: 0 200px 0 200px; /* Side margins */
     font-family: Arial, sans-serif;
     justify-content: center;
+    height: 85% !important; 
 }
 
 header {
@@ -148,4 +149,39 @@ main {
 .btn-black {
     background-color: black;
     color: white;
+}
+.black-border {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+}
+
+.confirm-btn {
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+}
+
+.student-block {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.card {
+    justify-content: left;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.card-header {
+    text-align: left;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid black;
+}
+
+.card-body {
+    text-align: left;
+    padding: 15px;
 }
