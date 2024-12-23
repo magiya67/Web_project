@@ -117,3 +117,14 @@ main {
         padding: 0 10% 0 10% !important;
     }
 } 
+.rating-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.rating {
+    font-weight: bold;
+}
