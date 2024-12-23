@@ -16,7 +16,9 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector('form').addEventListener('submit', function (event) {
         event.preventDefault();
 
-        var name = document.getElementById('name').value.trim();
+        var username = document.getElementById('username').value.trim();
+        var firstName = document.getElementById('firstName').value.trim();
+        var lastName = document.getElementById('lastName').value.trim();
         var email = document.getElementById('email').value.trim();
         var password = document.getElementById('password').value.trim();
         var phone = document.getElementById('phone').value.trim();
@@ -26,13 +28,22 @@ document.addEventListener("DOMContentLoaded", function () {
         var selectedSubjects = Array.from(document.querySelectorAll('#subjectCheckboxes .form-check input:checked'))
             .map(input => input.value);
 
-        var nameRegex = /^[А-ЯЁ][а-яё]+(?:\s[А-ЯЁ][а-яё]+)?$/;
+        var usernameRegex = /^[a-zA-Z0-9._-]{3,15}$/;
+        var nameRegex = /^[А-ЯЁ][а-яё]+$/;
         var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         var phoneRegex = /^\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}$/;
         var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!_?-])[A-Za-z\d!_?-]{8,20}$/;
 
-        if (!nameRegex.test(name)) {
-            alert('Имя должно содержать имя и фамилию: только кириллицу, пробелы и тире.');
+        if (!usernameRegex.test(username)) {
+            alert('Логин должен содержать от 3 до 15 символов: латиница, цифры, символы . _ -');
+            return;
+        }
+        if (!nameRegex.test(firstName)) {
+            alert('Введите корректное имя: только кириллица.');
+            return;
+        }
+        if (!nameRegex.test(lastName)) {
+            alert('Введите корректную фамилию: только кириллица.');
             return;
         }
         if (!emailRegex.test(email)) {
@@ -65,14 +76,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         var answers = {
-            A1: name,
-            A2: email,
-            A3: password,
-            A4: phone,
-            A5: city,
-            A6: dob,
-            A7: department,
-            A8: selectedSubjects
+            username: username,
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: password,
+            phone: phone,
+            city: city,
+            dob: dob,
+            department: department,
+            selectedSubjects: selectedSubjects
         };
 
         console.log(answers);
