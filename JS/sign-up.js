@@ -1,60 +1,55 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Маска для телефона
-    var phoneInput = document.getElementById('phone');
-    var im = new Inputmask("+7 (999) 999-99-99", { "clearIncomplete": true });
+    const phoneInput = document.getElementById('phone');
+    const im = new Inputmask("+7 (999) 999-99-99", { "clearIncomplete": true });
     im.mask(phoneInput);
 
     // Установка максимальной даты для даты рождения
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0');
-    var yyyy = today.getFullYear();
-    var maxDate = `${yyyy}-${mm}-${dd}`;
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const yyyy = today.getFullYear();
+    const maxDate = `${yyyy}-${mm}-${dd}`;
     document.getElementById('dob').setAttribute('max', maxDate);
 
     // Обработчик отправки формы
     document.querySelector('form').addEventListener('submit', function (event) {
         event.preventDefault();
 
-        var username = document.getElementById('username').value.trim();
-        var firstName = document.getElementById('firstName').value.trim();
-        var lastName = document.getElementById('lastName').value.trim();
-        var email = document.getElementById('email').value.trim();
-        var password = document.getElementById('password').value.trim();
-        var phone = document.getElementById('phone').value.trim();
-        var city = document.getElementById('city').value;
-        var dob = document.getElementById('dob').value;
-        var department = document.getElementById('department').value;
-        var selectedSubjects = Array.from(document.querySelectorAll('#subjectCheckboxes .form-check input:checked'))
+        const username = document.getElementById('username').value.trim();
+        const firstName = document.getElementById('firstName').value.trim();
+        const lastName = document.getElementById('lastName').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const city = document.getElementById('city').value;
+        const dob = document.getElementById('dob').value;
+        const department = document.getElementById('department').value;
+        const selectedSubjects = Array.from(document.querySelectorAll('#subjectCheckboxes .form-check input:checked'))
             .map(input => input.value);
 
-        var usernameRegex = /^[a-zA-Z0-9._-]{3,15}$/;
-        var nameRegex = /^[А-ЯЁ][а-яё]+$/;
-        var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        var phoneRegex = /^\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}$/;
-        var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!_?-])[A-Za-z\d!_?-]{8,20}$/;
-
-        if (!usernameRegex.test(username)) {
-            alert('Логин должен содержать от 3 до 15 символов: латиница, цифры, символы . _ -');
+        // Валидация данных
+        if (!username || username.length < 3) {
+            alert('Введите корректный логин (не менее 3 символов).');
             return;
         }
-        if (!nameRegex.test(firstName)) {
-            alert('Введите корректное имя: только кириллица.');
+        if (!firstName || firstName.length < 2) {
+            alert('Введите корректное имя.');
             return;
         }
-        if (!nameRegex.test(lastName)) {
-            alert('Введите корректную фамилию: только кириллица.');
+        if (!lastName || lastName.length < 2) {
+            alert('Введите корректную фамилию.');
             return;
         }
-        if (!emailRegex.test(email)) {
+        if (!email.includes("@")) {
             alert('Введите корректный email.');
             return;
         }
-        if (!passwordRegex.test(password)) {
-            alert('Введите корректный пароль, содержащий 1 цифру, 1 заглавную и 1 строчную букву, и спецсимвол !?_-');
+        if (password.length < 8) {
+            alert('Пароль должен содержать не менее 8 символов.');
             return;
         }
-        if (!phoneRegex.test(phone)) {
+        if (!phone) {
             alert('Введите корректный номер телефона.');
             return;
         }
@@ -75,40 +70,21 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        var answers = {
-            username: username,
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            password: password,
-            phone: phone,
-            city: city,
-            dob: dob,
-            department: department,
-            selectedSubjects: selectedSubjects
+        const answers = {
+            username,
+            firstName,
+            lastName,
+            email,
+            password,
+            phone,
+            city,
+            dob,
+            department,
+            selectedSubjects
         };
 
         console.log(answers);
 
         alert('Регистрация завершена!');
-    });
-
-    // Обработчик изменения департамента
-    document.getElementById('department').addEventListener('change', function () {
-        const selectedDepartment = this.value;
-        const subjectSection = document.getElementById('subjectSection');
-        const checkboxes = document.querySelectorAll('#subjectCheckboxes .form-check');
-
-        // Скрываем секцию с предметами по умолчанию
-        subjectSection.style.display = selectedDepartment ? 'block' : 'none';
-
-        // Скрываем все чекбоксы
-        checkboxes.forEach(checkbox => checkbox.style.display = 'none');
-
-        // Показываем чекбоксы, относящиеся к выбранному департаменту
-        if (selectedDepartment) {
-            document.querySelectorAll(`.department-${selectedDepartment.toLowerCase()}`)
-                .forEach(checkbox => checkbox.style.display = 'block');
-        }
     });
 });

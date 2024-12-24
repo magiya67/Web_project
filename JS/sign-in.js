@@ -1,15 +1,15 @@
 const users = [
-    { id: 1, login: 'zhakatvin', password: '11111Zh!' },
-    { id: 2, login: 'zhopa', password: '11111Zh!'},
-    { id: 3, login: 'artem', password: '11111Zh!'}
+    { id: 1, username: 'zhakatvin', password: '11111Zh!' },
+    { id: 2, username: 'zhopa', password: '11111Zh!'},
+    { id: 3, username: 'artem', password: '11111Zh!'}
   ];
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelector('form').addEventListener('submit', function (event) {
         event.preventDefault();
-        var login = document.getElementById("login").value.trim();
+        var username = document.getElementById("username").value.trim();
         var password = document.getElementById("password").value.trim();
         var user = users.find(function (user) {
-            return user.login === login && user.password === password;
+            return user.username === username && user.password === password;
         });
         
         if (user) {
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
             window.location.href = 'index.html';
 
         } else {
-            alert('Неверный login или пароль.');
+            alert('Неверный username или пароль.');
         }
     });
 });
