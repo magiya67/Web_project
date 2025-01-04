@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const city = document.getElementById('city').value;
         const dob = document.getElementById('dob').value;
         const department = document.getElementById('department').value;
+        const accountType = document.getElementById('accountType').value;
         const selectedSubjects = Array.from(document.querySelectorAll('#subjectCheckboxes .form-check input:checked'))
             .map(input => input.value);
 
@@ -69,6 +70,10 @@ document.addEventListener("DOMContentLoaded", function () {
             alert('Пожалуйста, выберите хотя бы один предмет.');
             return;
         }
+        if (accountType === "Выберите тип учетной записи...") {
+            alert('Пожалуйста, выберите тип учетной записи.');
+            return;
+        }
 
         const answers = {
             username,
@@ -80,7 +85,8 @@ document.addEventListener("DOMContentLoaded", function () {
             city,
             dob,
             department,
-            selectedSubjects
+            selectedSubjects,
+            accountType // Новый ответ
         };
 
         console.log(answers);
