@@ -14,22 +14,26 @@ const university_news = [
 ];
 
 const Notifications = () => {
-  return (
-      <div className="card">
-          <div className="card-header bg-dark text-white">
-              <h2 className="h5 mb-0">Ваш прогресс:</h2>
-          </div>
-          <div className="card-body">
-              {edited_applications.map((application) => (
-                  <div key={application.id} className="mb-2">
-                      <p>Добавлено изменение по вашей заявке "{application.name}".</p>
-                      <a href="#" className="btn btn-dark btn-sm">Посмотреть</a>
-                  </div>
-              ))}
-          </div>
-      </div>
-  );
-};
+    return (
+        <div className="card">
+            <div 
+                className="card-header" 
+                style={{ backgroundColor: "rgb(4, 68, 54)", color: "white" }}
+            >
+                <h2 className="h5 mb-0">Ваш прогресс:</h2>
+            </div>
+            <div className="card-body">
+                {edited_applications.map((application) => (
+                    <div key={application.id} className="mb-2">
+                        <p>Добавлено изменение по вашей заявке "{application.name}".</p>
+                        <a href="#" className="btn btn-sm" style= {{backgroundColor:"rgb(255, 140, 0)", color: "white"}}>Посмотреть</a>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+  };
+  
 
 const Subscriptions = () => {
   return (
@@ -45,8 +49,11 @@ const Subscriptions = () => {
 
 const News = () => {
   return (
-      <div className="card">
-          <div className="card-header bg-dark text-white">
+    <div className="card">
+    <div 
+        className="card-header" 
+        style={{ backgroundColor: "rgb(4, 68, 54)", color: "white" }}
+    >
               <h2 className="h5 mb-0">Новости университета:</h2>
           </div>
           <div className="card-body">

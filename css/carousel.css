@@ -1,0 +1,66 @@
+/* Стили для карусели */
+.carousel-wrapper {
+    position: relative;
+    width: 100%;
+    background-color: #094b35; /* Темно-зеленый фон */
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.carousel-container {
+    max-width: 600px; /* Размер карусели уменьшен */
+    margin: 0 auto;
+    z-index: 1;
+}
+
+.carousel-item {
+    position: relative;
+}
+
+/* Градиент внизу слайда */
+.gradient-caption {
+    position: absolute;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0% !important;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    color: #fff;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3)); /* Градиент от чёрного к прозрачному */
+    z-index: 2; /* Градиент поверх изображения */
+    text-align: center;
+}
+
+.carousel-caption h3, .carousel-caption p {
+    color: white; /* Белый текст */
+    margin: 0;
+}
+
+/* Адаптивность для градиента */
+@media (max-width: 768px) {
+    .gradient-caption {
+        padding: 15px;
+    }
+
+    .carousel-caption h3 {
+        font-size: 18px;
+    }
+
+    .carousel-caption p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 576px) {
+    .gradient-caption {
+        padding: 10px;
+    }
+
+    .carousel-caption h3 {
+        font-size: 16px;
+    }
+
+    .carousel-caption p {
+        font-size: 12px;
+    }
+}

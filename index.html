@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Главная</title>
+    <title>Учёба</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" href="img/book-icon.png" type="image/x-icon">
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -28,14 +28,21 @@
             </div>
         </div>
     </header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Главная</a></li>
-            <li><a href="application.html">Мои заявки</a></li>
-            <li><a href="profile.html">Личный кабинет</a></li>
-        </ul>
-        <br>
-        <hr>
+    <nav class="navbar">
+        <div class="container">
+            <ul class="navbar-nav d-flex flex-row justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="main.html">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="application.html">Мои заявки</a>
+                </li>
+                <li class="nav-item">
+                <li class="nav-item">
+                    <a class="nav-link" href="profile.html">Личный кабинет</a>
+                </li>
+            </ul>
+        </div>
     </nav>
     <main class="container my-5">
 
@@ -43,7 +50,7 @@
 
         <section id="notifications" class="mb-4 mt-4">
             <div class="card">
-                <div class="card-header bg-dark text-white">
+                <div class="card-header" style="background-color: rgb(4, 68, 54); color: white;">
                     <h2 class="h5 mb-0">Ваш прогресс:</h2>
                 </div>
                 <div class="card-body">
@@ -55,7 +62,7 @@
         
         <section id="subscriptions" class="mb-4">
             <div class="card">
-                <div class="card-header bg-dark text-white">
+                <div class="card-header" style="background-color: rgb(4, 68, 54); color: white;">
                     <h2 class="h5 mb-0">Ваши подписки:</h2>
                 </div>
                 <div class="card-body">
@@ -63,7 +70,8 @@
                         
                         <p>Ваши текущие подписки отобразятся здесь.</p>
                     </div>
-                    <a class="btn btn-dark" href="application.html">Добавить подписку</a>
+                    <a class="btn" style="background-color: rgb(255, 140, 0); color: white;" href="application.html">Добавить подписку</a>
+
                 </div>
             </div>
         </section>
@@ -71,7 +79,7 @@
         
         <section id="news" class="mb-4">
             <div class="card">
-                <div class="card-header bg-dark text-white">
+                <div class="card-header" style="background-color: rgb(4, 68, 54); color: white;">
                     <h2 class="h5 mb-0">Новости университета:</h2>
                 </div>
                 <div class="card-body">

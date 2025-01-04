@@ -1,5 +1,5 @@
 body, html {
-    background-color: white;
+    background-color: rgb(32, 168, 146) !important;
     margin: 0;
     padding: 0 200px 0 200px; /* Side margins */
     font-family: Arial, sans-serif;
@@ -8,7 +8,6 @@ body, html {
 }
 
 header {
-    background-color: white;
     padding: 10px 0;
 }
 
@@ -19,6 +18,7 @@ header {
 }
 
 .site-title h1 {
+    color: rgb(4, 68, 54);
     margin: 0;
     font-size: 1.8m;
 }
@@ -43,31 +43,41 @@ header {
     height: 75px;
     margin-left: 10px;
 }
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+.navbar {
+    background-color: rgb(255, 140, 0); /* Оранжевый цвет */
+    height: 60px; /* Фиксированная высота панели */
+    padding: 0 !important;
+}
+
+.navbar .container {
+    height: 100% !important;
+}
+
+.navbar-nav {
+    margin: 0 auto; /* Центрируем навигацию */
+    height: 100%; /* Полная высота панели */
+}
+
+.nav-item {
+    height: 100%; /* Кнопки на всю высоту панели */
+}
+
+.nav-link {
+    height: 100%; /* Полная высота внутри кнопки */
     display: flex;
-    justify-content: center;
+    align-items: center !important; /* Центрируем текст по вертикали */
+    justify-content: center !important; /* Центрируем текст по горизонтали */
+    padding: 16px 10px !important; /* Горизонтальные отступы для увеличения ширины кнопок */
+    color: white !important; /* Белый текст */
+    border: 1px solid rgba(255, 255, 255, 0.5)!important; /* Белёсый border */
+    transition: background-color 0.3s, color 0.3s; /* Плавный переход при наведении */
 }
 
-nav ul li {
-    margin: 0 10px;
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Лёгкий белый фон при наведении */
+    color: #ffffff; /* Белый текст при наведении */
 }
 
-nav ul li a {
-    display: block;
-    background-color: black;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-nav ul li a:hover {
-    background-color: #363636;
-}
 
 main {
     margin-top: 20px;
@@ -104,6 +114,10 @@ main {
     background-color: #363636;
 }
 @media (max-width:738px){
+    .navbar-nav {
+        flex-direction: column;
+        text-align: center;
+    }
     .view-button {
         font-size: 3vw;
     }
