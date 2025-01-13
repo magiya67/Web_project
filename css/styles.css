@@ -44,38 +44,34 @@ header {
     margin-left: 10px;
 }
 .navbar {
-    background-color: rgb(255, 140, 0); /* Оранжевый цвет */
-    height: 60px; /* Фиксированная высота панели */
+    background-color: rgb(255, 140, 0);
     padding: 0 !important;
 }
-
-.navbar .container {
-    height: 100% !important;
-}
-
 .navbar-nav {
-    margin: 0 auto; /* Центрируем навигацию */
-    height: 100%; /* Полная высота панели */
-}
-
-.nav-item {
-    height: 100%; /* Кнопки на всю высоту панели */
-}
-
-.nav-link {
-    height: 100%; /* Полная высота внутри кнопки */
     display: flex;
-    align-items: center !important; /* Центрируем текст по вертикали */
-    justify-content: center !important; /* Центрируем текст по горизонтали */
-    padding: 16px 10px !important; /* Горизонтальные отступы для увеличения ширины кнопок */
-    color: white !important; /* Белый текст */
-    border: 1px solid rgba(255, 255, 255, 0.5)!important; /* Белёсый border */
-    transition: background-color 0.3s, color 0.3s; /* Плавный переход при наведении */
+    flex-direction: row; 
+    justify-content: center;
+    align-items: center;
+    width: 100%; 
+}
+.navbar-nav .nav-item {
+    margin: 0;
+    flex-shrink: 0;
+}
+.navbar-nav .nav-link {
+    height: 100%; 
+    display: flex;
+    align-items: center !important; 
+    justify-content: center !important; 
+    padding: 16px 10px !important; 
+    color: white !important; 
+    border: 1px solid rgba(255, 255, 255, 0.5)!important; 
+    transition: background-color 0.3s, color 0.3s; 
 }
 
 .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Лёгкий белый фон при наведении */
-    color: #ffffff; /* Белый текст при наведении */
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff; 
 }
 
 
@@ -113,11 +109,24 @@ main {
 .view-button:hover {
     background-color: #363636;
 }
-@media (max-width:738px){
-    .navbar-nav {
-        flex-direction: column;
-        text-align: center;
+@media (max-width:1400px) {
+    html {
+        padding:0 !important;
     }
+    body {
+        padding: 0 100px 0 100px;
+    }
+}
+@media (max-width:738px){
+    body, html {
+        background-color: rgb(32, 168, 146) !important;
+        margin: 0;
+        padding: 0 !important; /* Side margins */
+        font-family: Arial, sans-serif;
+        justify-content: center;
+        height: 85% !important; 
+    }
+
     .view-button {
         font-size: 3vw;
     }
@@ -127,9 +136,6 @@ main {
     }
     .progress-section p{
         font-size: 3vw;
-    }
-    body {
-        padding: 0 10% 0 10% !important;
     }
 } 
 .rating-box {

@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Главная</title>
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/carousel.css">
     <link rel="icon" href="img/book-icon.png" type="image/x-icon">
@@ -27,20 +29,62 @@
     </header>
     <nav class="navbar">
         <div class="container">
-            <ul class="navbar-nav d-flex flex-column flex-md-row justify-content-center align-items-center w-100">
+            <ul class="navbar-nav d-flex flex-row flex-md-row justify-content-center align-items-center">
                 <li class="nav-item">
-                    <a class="nav-link text-center" href="index.html">Моя учёба</a>
+                    <a class="nav-link" href="index.html">Моя учёба</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-center" href="about.html">О нас</a>
+                    <a class="nav-link" href="about.html">О нас</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-center" href="profile.html">Личный кабинет</a>
+                    <a class="nav-link" href="profile.html">Личный кабинет</a>
                 </li>
             </ul>
         </div>
     </nav>
     <main>
+        <section class="school-stats" style="background-color: #f9f9f9; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+            <div class="container">
+                <h2 class="text-center" style="color: #ff6a00; font-weight: bold; font-size: 2vw;">Онлайн-дневник, которому доверяют</h2>
+                <p class="text-center" style="font-size: 27px; font-weight: 600;">Каждый 10 студент России пользуется Домашкером!</p>
+                <div class="row text-center gy-4">
+                    <div class="col-md-3">
+                        <div style="background-color: #e9ecef; padding: 15px; border-radius: 10px; height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                            <p class="text-h" style="font-size: 25px; font-weight: bold;">5 лет</p>
+                            <p class="text-h2"style="font-size: 16px; font-weight: 600;">Успешной коллаборации с ВУЗами России и СНГ</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div style="background-color: #e9ecef; padding: 15px; border-radius: 10px; height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                            <p class="text-h" style="font-size: 25px; font-weight: bold;">130 000+ учеников</p>
+                            <p class="text-h2" style="font-size: 16px; font-weight: 600;">Домашкер - крупнейший сервис обмена работами между студентами и преподавателями.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div style="background-color: #e9ecef; padding: 15px; border-radius: 10px; height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                            <p class="text-h" style="font-size: 25px; font-weight: bold;">2000+ ежедневно</p>
+                            <p class="text-h2" style="font-size: 16px; font-weight: 600;">Количество обрабатываемых заявок с работами</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div style="background-color: #e9ecef; padding: 15px; border-radius: 10px; height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                            <p class="text-h" style="font-size: 25px; font-weight: bold;">1 МЛН +</p>
+                            <p class="text-h2" style="font-size: 16px; font-weight: 600;">Оценок выставлено за работы</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <p class="rate-text1" style="font-size: 20px; font-weight: 600;">Рейтинг на основе отзывов студентов и преподавателей</p>
+                    <p class="rate-text2" style="font-size: 18px; font-weight: 500;">
+                        <span style="margin-right: 15px;">Сравни.ру — 4.8 ★</span>
+                        <span style="margin-right: 15px;">I-Recommend — 4.9 ★</span>
+                        <span style="margin-right: 15px;">Отзовик — 4.9 ★</span>
+                        <span>Яндекс — 5 ★</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+        
         <div class="carousel-wrapper">
             <div class="carousel-container">
                 <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
@@ -78,9 +122,18 @@
                 </div>
             </div>
         </div>
+        
+        <!-- Блок для новостей -->
+        <section id="news-section" class="container mt-5" style="background-color: white; padding: 20px; border-radius: 10px;">
+            <h2 class="text-center">Последние новости</h2>
+            <div id="news-container" class="row gy-4">
+                <!-- Новости будут загружены сюда -->
+            </div>
+        </section>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="JS/main.js"></script>
+    <script src="JS/news.js"></script>
 </body>
 </html>

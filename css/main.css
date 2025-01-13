@@ -1,0 +1,50 @@
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+    /* Адаптация блока school-stats */
+    .school-stats {
+        padding: 15px;
+        margin-bottom: 15px;
+        width: 100%; /* Растягивается на всю ширину */
+    }
+    .school-stats .text-center {
+        font-size: 2vw;
+    }
+    .school-stats h2 {
+        font-size: 5vw !important; /* Адаптация заголовка */
+    }
+    .text-h {
+        font-size: medium;
+    }
+    .text-h2 {
+        font-size: 2em !important;
+    }
+    .school-stats p {
+        font-size: 16px;
+    }
+    .school-stats .row .col-md-3 {
+        flex: 0 0 100%; /* Полная ширина карточек */
+        max-width: 100%;
+    }
+    .school-stats .row .col-md-3 div {
+        max-height: 200px; /* Убрать фиксированную высоту */
+        padding: 10px;
+        width: 100%; /* Растягивается на всю ширину */
+    }
+    .rate-text1 {
+        font-size: 2em;
+    }
+    .rate-text2 {
+        font-size: 1.7em;
+    }
+}
+
+@media (max-width: 576px) {
+    /* Блок school-stats на маленьких экранах */
+    .school-stats h2 {
+        font-size: 5vw;
+    }
+    .school-stats p {
+        font-size: 1vw;
+    }
+}

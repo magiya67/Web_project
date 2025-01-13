@@ -1,0 +1,74 @@
+.navbar {
+    background-color: rgb(255, 140, 0);
+    padding: 0;
+}
+.navbar-nav {
+    display: flex;
+    flex-direction: row; /* Вертикальное расположение элементов */
+    justify-content: center!important; /* Равномерное распределение кнопок */
+    align-items: center !important;
+    width: 100% !important; /* Полная ширина */
+}
+.navbar-nav .nav-item {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+    flex-shrink: 0;
+}
+.navbar-nav .nav-link {
+    height: 100%; /* Полная высота внутри кнопки */
+    display: flex;
+    align-items: center !important; /* Центрируем текст по вертикали */
+    justify-content: center !important; /* Центрируем текст по горизонтали */
+    padding: 16px 10px !important; /* Горизонтальные отступы для увеличения ширины кнопок */
+    color: white !important; /* Белый текст */
+    border: 1px solid rgba(255, 255, 255, 0.5)!important; /* Белёсый border */
+    transition: background-color 0.3s, color 0.3s; /* Плавный переход при наведении */
+}
+.navbar-nav .nav-link:hover {
+    background-color:rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+.navbar .container {
+    margin: 0;
+    padding: 0!important;
+    max-width: 100%;
+    width: 100% !important;
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+    body, html {
+        background-color: rgb(32, 168, 146) !important;
+        margin: 0;
+        padding: 0 !important; /* Side margins */
+        font-family: Arial, sans-serif;
+        justify-content: center;
+        height: 85% !important; 
+    }
+    /* Адаптация навигации */
+    .navbar {
+        width: 100% !important; /* Растягивается на всю ширину */
+        height: fit-content !important;
+    }
+    .navbar-nav .nav-item {
+        font-size: 0.9em;
+        font-weight: 600;
+    }
+    .navbar .container {
+        width: 100% !important;
+    }
+    .navbar-nav {
+        height: fit-content;
+        flex-direction: row;
+        align-items: stretch;
+        /* gap: 5px; */
+        padding: 0;
+    }
+    .nav-link {
+        flex-grow: 1; /* Кнопки растягиваются равномерно */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
