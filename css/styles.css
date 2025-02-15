@@ -205,3 +205,56 @@ main {
     text-align: left;
     padding: 15px;
 }
+
+.input-error {
+    border-color: #dc3545 !important;
+    box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25) !important;
+}
+
+.error-icon {
+    position: absolute !important;
+    color: red;
+    cursor: pointer;
+    z-index: 2;
+    font-size: 1.2em;
+}
+
+.error-tooltip {
+    position: absolute !important;
+    background: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    z-index: 1000;
+    white-space: nowrap;
+    pointer-events: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Для полей с типом date */
+input[type="date"] + .error-icon {
+    right: 25px;
+}
+
+/* Для селектов */
+.form-select + .error-icon {
+    right: 25px;
+}
+/* Адаптивные стили для подсказок */
+@media (max-width: 576px) {
+    .error-icon {
+        position: static;
+        display: block;
+        margin-top: 5px;
+        text-align: center;
+        flex: auto;
+    }
+
+    .error-tooltip {
+        position: static;
+        margin-top: 5px;
+        width: 100%;
+        text-align: center;
+    }
+}

@@ -119,11 +119,15 @@
             </div>
         </div>
     </main>
-    <footer class="bg-light text-center border-top py-3">
+    <footer class="bg-light py-3 border-top mt-4">
         <div class="container text-center">
-            <p class="mb-0">&copy; 2024 Домашкер. Все права защищены.</p>
+            <p class="mb-0" id="copyright-year">&copy; 2024 Домашкер. Все права защищены.</p>
         </div>
     </footer>
     <script src="JS/application.js"></script>
+    <script>
+        const currentYear = new Date().getFullYear();
+        document.getElementById('copyright-year').textContent = `${currentYear} Домашкер. Все права защищены.`;
+    </script>
 </body>
 </html>

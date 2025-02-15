@@ -1,0 +1,24 @@
+/* Стиль для body и html */
+html, body {
+    height: 100% !important; /* Устанавливаем высоту на 100% viewport */
+    margin: 0; /* Убираем стандартные отступы */
+}
+
+/* Стиль для основного контейнера */
+#wrapper {
+    display: flex;
+    flex-direction: column; /* Располагаем элементы вертикально */
+    min-height: 100%; /* Минимальная высота равна высоте viewport */
+}
+
+/* Стиль для основного содержимого (main) */
+main {
+    flex: 1; /* Занимает всё доступное пространство между header и footer */
+}
+
+/* Стиль для футера */
+footer {
+    background-color: #f8f9fa; /* Цвет фона */
+    padding: 1rem 0; /* Отступы внутри футера */
+    border-top: 1px solid #ddd; /* Верхняя граница */
+}

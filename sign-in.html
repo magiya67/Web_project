@@ -6,9 +6,6 @@
     <title>Войти</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" href="img/book-icon.png" type="image/x-icon">
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
@@ -28,29 +25,34 @@
         <div class="container d-flex justify-content-center align-items-start" style="height: 100%; margin-top: 50px;">
             <div class="card shadow p-4" style="width: 400px;">
                 <h3 class="text-center mb-4">Войти в аккаунт</h3>
-                <form>
+                <form id="loginForm">
                     <div class="mb-3">
                         <label for="username" class="form-label">Ваш логин</label>
-                        <input type="text" class="form-control" id="username" placeholder="ivan2005">
+                        <input type="text" class="form-control" id="username" placeholder="Логин">
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Ваш пароль</label>
-                        <input type="password" class="form-control" id="password" placeholder="">
+                        <input type="password" class="form-control" id="password" placeholder="Пароль">
                     </div>
                     <div class="d-flex justify-content-between">
-                        <button type="submit" class="btn btn-primary" style="background-color:rgb(255, 140, 0); border-color: rgb(255, 140, 0);">Войти</button>
-                        <a href="pre-sign-up.html" class="btn btn-primary" style="background-color:rgb(255, 140, 0); border-color: rgb(255, 140, 0);">Зарегистрироваться</a>
+                        <button type="submit" class="btn btn-primary" style="background-color:rgb(255, 140, 0); border-color:rgb(255, 140, 0);">Войти</button>
+                        <a href="sign-up.html" class="btn btn-primary" style="background-color:rgb(255, 140, 0); border-color:rgb(255, 140, 0);">Зарегистрироваться</a>
                     </div>
                 </form>
             </div>
         </div>
     </main>
-    <footer class="bg-light text-center border-top py-3">
+    <footer class="bg-light py-3 border-top mt-4">
         <div class="container text-center">
-            <p class="mb-0">&copy; 2024 Домашкер. Все права защищены.</p>
+            <p class="mb-0" id="copyright-year">&copy; 2024 Домашкер. Все права защищены.</p>
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="JS/sign-in.js" ></script>    
+    <script src="JS/sign-in.js"></script>
+    <script>
+        // Обновление года в футере
+        const currentYear = new Date().getFullYear();
+        document.getElementById('copyright-year').textContent = `${currentYear} Домашкер. Все права защищены.`;
+    </script>
 </body>
 </html>
