@@ -62,12 +62,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="city" class="form-label">Город</label>
-                        <select class="form-select" id="city">
-                            <option selected>Выберите город...</option>
-                            <option value="Москва">Москва</option>
-                            <option value="Санкт-Петербург">Санкт-Петербург</option>
-                            <option value="Новосибирск">Новосибирск</option>
-                        </select>
+                        <input type="text" class="form-control" id="city" placeholder="Введите город...">
+                        <div id="citySuggestions" class="list-group city-suggestions" style="display: none;"></div>
                     </div>
                     <div class="mb-3">
                         <label for="department" class="form-label">Департамент</label>

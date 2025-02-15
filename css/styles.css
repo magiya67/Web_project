@@ -258,3 +258,25 @@ input[type="date"] + .error-icon {
         text-align: center;
     }
 }
+
+.city-suggestions {
+    position: absolute;
+    z-index: 1000;
+    max-height: 150px; /* Ограничиваем высоту */
+    overflow-y: auto; /* Добавляем скролл, если элементов много */
+    border: 1px solid #ddd; /* Граница для подсказок */
+    border-radius: 4px; /* Скругление углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для эффекта выпадающего списка */
+    background-color: white; /* Фон подсказок */
+    display: none; /* Скрываем по умолчанию */
+}
+
+.list-group-item {
+    cursor: pointer; /* Указатель мыши при наведении */
+    border: none; /* Убираем границы между элементами */
+    padding: 8px 12px; /* Отступы внутри элементов */
+}
+
+.list-group-item:hover {
+    background-color: #f8f9fa; /* Цвет фона при наведении */
+}

@@ -1,4 +1,43 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Массив городов для поиска
+    const cities = ['Москва', 'Санкт-Петербург', 'Новосибирск'];
+
+    // Элементы DOM
+    const cityInput = document.getElementById('city');
+    const citySuggestions = document.getElementById('citySuggestions');
+
+    // Обработчик ввода в поле города
+    cityInput.addEventListener('input', function () {
+        const inputValue = cityInput.value.trim().toLowerCase();
+        const filteredCities = cities.filter(city => city.toLowerCase().includes(inputValue));
+
+        if (filteredCities.length > 0) {
+            // Создаем HTML для подсказок
+            citySuggestions.innerHTML = filteredCities.map(city => `
+                <a href="#" class="list-group-item list-group-item-action" data-city="${city}">${city}</a>
+            `).join('');
+            citySuggestions.style.display = 'block'; // Показываем подсказки
+        } else {
+            citySuggestions.style.display = 'none'; // Скрываем подсказки
+        }
+    });
+
+    // Обработчик клика по подсказкам
+    citySuggestions.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') {
+            e.preventDefault(); // Предотвращаем переход по ссылке
+            cityInput.value = e.target.getAttribute('data-city'); // Устанавливаем значение в поле ввода
+            citySuggestions.style.display = 'none'; // Скрываем подсказки
+        }
+    });
+
+    // Закрытие подсказок при клике вне поля ввода
+    document.addEventListener('click', function (e) {
+        if (!cityInput.contains(e.target) && !citySuggestions.contains(e.target)) {
+            citySuggestions.style.display = 'none';
+        }
+    });
+
     // Маска для телефона
     const phoneInput = document.getElementById('phone');
     const im = new Inputmask("+7 (999) 999-99-99", { "clearIncomplete": true });
@@ -25,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const email = document.getElementById('email').value.trim();
         const password = document.getElementById('password').value.trim();
         const phone = document.getElementById('phone').value.trim();
-        const city = document.getElementById('city').value;
+        const city = cityInput.value.trim();
         const department = document.getElementById('department').value;
         const dob = document.getElementById('dob').value;
         const subjects = document.querySelectorAll('#subjectCheckboxes input[type="checkbox"]:checked');
@@ -69,8 +108,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // Валидация города
-        if (!city || city === "Выберите город...") {
-            addError(document.getElementById('city'), 'Пожалуйста, выберите город.');
+        if (!city) {
+            addError(cityInput, 'Пожалуйста, выберите город.');
             isValid = false;
         }
 
@@ -106,28 +145,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 dob: dob,
                 subjects: Array.from(subjects).map(subject => subject.value)
             };
-
             console.log('Данные для отправки:', formData);
-
-            // Здесь можно добавить отправку данных на сервер
-            // fetch('URL_СЕРВЕРА', {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json'
-            //     },
-            //     body: JSON.stringify(formData)
-            // })
-            // .then(response => response.json())
-            // .then(data => {
-            //     if (data.success) {
-            //         window.location.href = data.redirect_url || '/success';
-            //     } else {
-            //         alert('Ошибка сервера: ' + JSON.stringify(data.errors));
-            //     }
-            // })
-            // .catch(error => {
-            //     console.error('Ошибка при отправке:', error);
-            // });
+            alert('Регистрация успешна!');
         }
     });
 
@@ -135,21 +154,21 @@ document.addEventListener("DOMContentLoaded", function () {
     function addError(input, message) {
         input.classList.add('input-error');
         const wrapper = input.closest('.mb-3') || input.parentElement;
-    
+
         // Удаляем старую иконку, если есть
         const existingIcon = wrapper.querySelector('.error-icon');
         if (existingIcon) existingIcon.remove();
-    
+
         // Добавляем восклицательный знак
         const errorIcon = document.createElement('span');
         errorIcon.className = 'error-icon d-none d-sm-block'; // Скрываем на мобильных
         errorIcon.innerHTML = '❗';
-    
+
         // Добавляем сообщение об ошибке для мобильных
         const errorMessage = document.createElement('div');
         errorMessage.className = 'error-message d-block d-sm-none text-danger mt-2'; // Показываем только на мобильных
         errorMessage.textContent = message;
-    
+
         // Позиционирование иконки
         wrapper.style.position = 'relative';
         errorIcon.style.position = 'absolute';
@@ -159,30 +178,31 @@ document.addEventListener("DOMContentLoaded", function () {
         errorIcon.style.color = 'red';
         errorIcon.style.cursor = 'pointer';
         errorIcon.style.zIndex = '1';
-    
+
         // Добавляем подсказку
         errorIcon.addEventListener('mouseenter', () => {
             const tooltip = document.createElement('div');
             tooltip.className = 'error-tooltip d-none d-sm-block'; // Скрываем на мобильных
             tooltip.textContent = message;
-    
+
             const rect = errorIcon.getBoundingClientRect();
             tooltip.style.position = 'fixed';
             tooltip.style.left = `${rect.left + window.scrollX}px`;
             tooltip.style.top = `${rect.bottom + window.scrollY + 5}px`;
-    
+
             document.body.appendChild(tooltip);
         });
-    
+
         errorIcon.addEventListener('mouseleave', () => {
             const tooltip = document.querySelector('.error-tooltip');
             if (tooltip) tooltip.remove();
         });
-    
+
         wrapper.appendChild(errorIcon);
         wrapper.appendChild(errorMessage);
     }
-    
+
+    // Функция для очистки ошибок
     function clearErrors() {
         document.querySelectorAll('.input-error').forEach(el => {
             el.classList.remove('input-error');

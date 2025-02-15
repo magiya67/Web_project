@@ -80,6 +80,50 @@
                                 <p id="phoneText" class="form-control-static">+7 (800) 555-35-35</p>
                                 <input type="tel" class="form-control editable-field" id="phoneInput" value="+7 (999) 999-99-99">
                             </div>
+
+                            <div class="mb-3">
+                                <label for="city" class="form-label">Город</label>
+                                <p id="cityText" class="form-control-static">Москва</p>
+                                <input type="text" class="form-control editable-field" id="cityInput" value="Москва" placeholder="Введите город">
+                                    <div id="citySuggestions" class="city-suggestions list-group">
+                                    </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="department" class="form-label">Департамент</label>
+                                <p id="departmentText" class="form-control-static">IT</p>
+                                <select class="form-control editable-field" id="departmentInput">
+                                    <option value="IT">IT</option>
+                                    <option value="Маркетинг">Маркетинг</option>
+                                    <option value="Финансы">Финансы</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Учебные предметы</label>
+                                <div id="subjectsText" class="form-control-static">
+                                    <span>Русский язык, Английский язык</span>
+                                </div>
+                                <div id="subjectsInput" class="editable-field">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="Русский язык" id="subjectRussian">
+                                        <label class="form-check-label" for="subjectRussian">Русский язык</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="Английский язык" id="subjectEnglish">
+                                        <label class="form-check-label" for="subjectEnglish">Английский язык</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="БЖД" id="subjectBJD">
+                                        <label class="form-check-label" for="subjectBJD">БЖД</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="История" id="subjectHistory">
+                                        <label class="form-check-label" for="subjectHistory">История</label>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="mb-3 text-align left">
                                 <button type="button" id="editBtn" class="btn btn-secondary mt-2" style="background-color:rgb(255, 140, 0); border-color:rgb(255, 140, 0);">Изменить</button>
                                 <button type="button" id="saveBtn" class="btn btn-primary mt-2" style="background-color:rgb(255, 140, 0); border-color:rgb(255, 140, 0); display: none;">Сохранить</button>
