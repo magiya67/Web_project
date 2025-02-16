@@ -1,49 +1,96 @@
-async function fetchNews() {
+// news.js
+document.addEventListener('DOMContentLoaded', function () {
     const newsContainer = document.getElementById('news-container');
+    const paginationContainer = document.getElementById('pagination-container');
+    let allNews = []; // Все новости
+    let currentPage = 1;
+    const newsPerPage = 5; // Новостей на странице
 
-    try {
-        const response = await fetch('http://localhost:3000/proxy');
-        if (!response.ok) {
-            throw new Error(`HTTP Error: ${response.status}`);
-        }
+    // Функция для отображения новостей на текущей странице
+    function displayNews(page) {
+        const startIndex = (page - 1) * newsPerPage;
+        const endIndex = startIndex + newsPerPage;
+        const newsToShow = allNews.slice(startIndex, endIndex);
 
-        const html = await response.text(); // Получаем HTML как текст
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-
-        // Пример парсинга новостей
-        const newsItems = [];
-        const newsList = doc.querySelectorAll('.news-item');
-        newsList.forEach(item => {
-            const date = item.querySelector('.news-item-date')?.textContent.trim();
-            const title = item.querySelector('.news-item-short')?.textContent.trim();
-            const link = item.querySelector('a')?.href;
-            const image = item.querySelector('.news-image img')?.src;
-
-            newsItems.push({ date, title, link, image });
-        });
-
-        // Отображаем новости
-        newsItems.forEach(news => {
-            const newsCard = document.createElement('div');
-            newsCard.className = 'col-md-4';
-            newsCard.innerHTML = `
-                <div class="card h-100">
-                    <img src="${news.image}" class="card-img-top" alt="${news.title}">
-                    <div class="card-body">
-                        <h5 class="card-title">${news.title}</h5>
-                        <p class="card-text"><strong>Дата:</strong> ${news.date}</p>
-                        <a href="${news.link}" target="_blank" class="btn btn-primary">Читать далее</a>
-                    </div>
+        newsContainer.innerHTML = '';
+        newsToShow.forEach(news => {
+            const newsItem = document.createElement('div');
+            newsItem.className = 'news-item';
+            newsItem.innerHTML = `
+                <div class="news-content">
+                    <h3 class="news-title">${news.title}</h3>
+                    <p class="news-date"><small>${news.date}</small></p>
+                    <p class="news-description">${news.description}</p>
+                    <a href="${news.link}" class="news-link" target="_blank">Читать далее →</a>
                 </div>
             `;
-            newsContainer.appendChild(newsCard);
+            newsContainer.appendChild(newsItem);
+        });
+    }
+
+    // Функция для создания кнопок пагинации
+    function setupPagination(totalPages) {
+        paginationContainer.innerHTML = '';
+
+        // Кнопка "Назад"
+        const prevButton = document.createElement('button');
+        prevButton.innerText = '←';
+        prevButton.disabled = currentPage === 1;
+        prevButton.addEventListener('click', () => {
+            currentPage--;
+            displayNews(currentPage);
+            setupPagination(totalPages);
         });
 
-    } catch (error) {
-        newsContainer.innerHTML = '<p class="text-center text-danger">Ошибка загрузки новостей.</p>';
-        console.error('Ошибка загрузки новостей:', error);
-    }
-}
+        // Нумерация страниц
+        const pageNumbers = document.createElement('div');
+        pageNumbers.className = 'page-numbers';
+        for (let i = 1; i <= totalPages; i++) {
+            const pageButton = document.createElement('button');
+            pageButton.innerText = i;
+            pageButton.className = currentPage === i ? 'active' : '';
+            pageButton.addEventListener('click', () => {
+                currentPage = i;
+                displayNews(currentPage);
+                setupPagination(totalPages);
+            });
+            pageNumbers.appendChild(pageButton);
+        }
 
-fetchNews();
+        // Кнопка "Вперед"
+        const nextButton = document.createElement('button');
+        nextButton.innerText = '→';
+        nextButton.disabled = currentPage === totalPages;
+        nextButton.addEventListener('click', () => {
+            currentPage++;
+            displayNews(currentPage);
+            setupPagination(totalPages);
+        });
+
+        paginationContainer.appendChild(prevButton);
+        paginationContainer.appendChild(pageNumbers);
+        paginationContainer.appendChild(nextButton);
+    }
+
+    // Загрузка новостей
+    function loadNews() {
+        fetch('/get-news/')
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    newsContainer.innerHTML = `<p class="text-danger">Ошибка: ${data.error}</p>`;
+                    return;
+                }
+
+                allNews = data;
+                const totalPages = Math.ceil(allNews.length / newsPerPage);
+                displayNews(currentPage);
+                setupPagination(totalPages);
+            })
+            .catch(error => {
+                newsContainer.innerHTML = `<p class="text-danger">Ошибка при загрузке: ${error.message}</p>`;
+            });
+    }
+
+    loadNews();
+});
